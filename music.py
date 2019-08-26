@@ -50,7 +50,7 @@ def callback_inline(call):
 #######################################################################################
 
 @bot.message_handler(content_types=['text'])
-def SendMusic(m):
+def dw(m):
     if m.from_user.id == 223870582 or m.from_user.id == 274081889:
         if m.text == '/start':
             bot.send_message(m.chat.id,"ربات آماده کاره😃")
