@@ -11,6 +11,7 @@ import json
 import os
 import logging
 import subprocess
+import re
 import requests
 import random
 from random import randint
@@ -33,7 +34,7 @@ u = "\n \033[01;34m Bot Username: {} \033[0m".format(bot.get_me().username)
 i = "\n \033[01;32m Bot ID: {} \033[0m".format(bot.get_me().id)
 c = "\n \033[01;31m Bot Is Online Now! \033[0m"
 print(f + u + i + c)
-channel = -1001110830559
+channel = -1001348292872
 #######################################################################################
 
 def random_char(y):
@@ -49,21 +50,22 @@ def MusicBot(m):
             bot.send_message(m.chat.id,"ربات آماده کاره😃")
         elif re.match('(http|https)://.*.(mp3)$',text):
                     Mname = random_char(5)
-                    redis.set('MusicName', Mname)
+                    redis.hset('MusicName',Mname)
                     dw(text,'./Music/'+str(Mname)+'-Music.mp3')
                     Kinline = types.InlineKeyboardMarkup()
-                    Tsend = types.InlineKeyboardButton('بفرس😉',callback_data="send")
+                    Tsend = types.InlineKeyboardButton('بفرس😉',callback_data="send:"+str(Mname))
                     Kinline.add(Tsend)
+                    audio = open('./Music/{}-Music.mp3'.format(code), 'rb')
+                    bot.send_audio(m.chat.id, audio,reply_markup=Kinline)
                     bot.send_message(m.chat.id,"فایل با فرمت *MP3* دانلود شد\nآیا مایلید به کانال ارسال شود؟",parse_mode='Markdown',reply_markup=Kinline)
 
 #######################################################################################
 
 @bot.callback_query_handler(func=lambda call: True)
 def callback_inline(call):
-    if call.data == "send":
-        sendmusic = redis.get('MusicName')
-        audio = open('./Music/{}-Music.mp3'.format(sendmusic), 'rb')
-        bot.send_audio(channel,audio)
+    if re.match('(send:).*',call.data):
+        sendmusic = call.data.replace('send:','')
+        bot.send_audio(channel, open('./Music/'+str(sendmusic)+'-Music.mp3'))
         bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id,text="با موفقیت ارسال شد✅")
 
 #######################################################################################
