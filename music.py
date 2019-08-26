@@ -63,8 +63,7 @@ def MusicBot(m):
 @bot.callback_query_handler(func=lambda call: True)
 def callback_inline(call):
     if call.data == "send":
-        dodol = redis.hget('MusicName')
-        bot.send_audio(channel, open('./Music/'+str(dodol)+'-Music.mp3'))
+        bot.send_audio(channel, open('./Music/'+str(Mname)+'-Music.mp3'))
         bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id,text="با موفقیت ارسال شد✅")
 
 #######################################################################################
