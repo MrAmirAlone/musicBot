@@ -58,7 +58,7 @@ def downlad(m):
         elif re.match('(http|https)://.*.(mp3)$',text):
                     rd = random_char(5)
                     pm = rd
-                    dw(text,'Music.mp3')
+                    dw(m.text,'Music.mp3')
                     Kinline = types.InlineKeyboardMarkup()
                     Tsend = types.InlineKeyboardButton('بفرس😉',callback_data="send")
                     Kinline.add(Tsend)
