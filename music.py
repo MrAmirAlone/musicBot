@@ -34,7 +34,7 @@ u = "\n \033[01;34m Bot Username: {} \033[0m".format(bot.get_me().username)
 i = "\n \033[01;32m Bot ID: {} \033[0m".format(bot.get_me().id)
 c = "\n \033[01;31m Bot Is Online Now! \033[0m"
 print(f + u + i + c)
-channel = -1001348292872
+channel = -1001110830559
 #######################################################################################
 
 def random_char(y):
@@ -50,7 +50,7 @@ def MusicBot(m):
             bot.send_message(m.chat.id,"ربات آماده کاره😃")
         elif re.match('(http|https)://.*.(mp3)$',text):
                     Mname = random_char(5)
-                    redis.hset('MusicName',Mname)
+                    redis.sadd('MusicName',Mname)
                     dw(text,'./Music/'+str(Mname)+'-Music.mp3')
                     Kinline = types.InlineKeyboardMarkup()
                     Tsend = types.InlineKeyboardButton('بفرس😉',callback_data="send:"+str(Mname))
