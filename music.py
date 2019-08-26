@@ -62,7 +62,7 @@ def downlad(m):
                     Kinline = types.InlineKeyboardMarkup()
                     Tsend = types.InlineKeyboardButton('بفرس😉',callback_data="send")
                     Kinline.add(Tsend)
-                    bot.send_message(m.chat.id,"فایل با فرمت *MP3* دانلود شد\nآیا مایلید به کانال ارسال شود؟",parse_mode=Markdown,reply_markup=Kinline)
+                    bot.send_message(m.chat.id,"فایل با فرمت *MP3* دانلود شد\nآیا مایلید به کانال ارسال شود؟",parse_mode='Markdown',reply_markup=Kinline)
 
 #######################################################################################
 
