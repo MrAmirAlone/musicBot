@@ -49,11 +49,13 @@ def MusicBot(m):
             bot.send_message(m.chat.id,"ربات آماده کاره😃")
         elif re.match('(http|https)://.*.(mp3)$',text):
                     Mname = random_char(5)
-                    redis.hset('MusicName:',Mname)
+                    redis.hset('MusicName',Mname)
                     dw(text,'./Music/'+str(Mname)+'-Music.mp3')
                     Kinline = types.InlineKeyboardMarkup()
                     Tsend = types.InlineKeyboardButton('بفرس😉',callback_data="send")
                     Kinline.add(Tsend)
+                    audio = open('./Music/{}-Music.mp3'.format(code), 'rb')
+                    bot.send_audio(m.chat.id, audio,reply_markup=Kinline)
                     bot.send_message(m.chat.id,"فایل با فرمت *MP3* دانلود شد\nآیا مایلید به کانال ارسال شود؟",parse_mode='Markdown',reply_markup=Kinline)
 
 #######################################################################################
