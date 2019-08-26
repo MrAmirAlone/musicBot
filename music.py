@@ -63,7 +63,7 @@ def callback_inline(call):
     if call.data == "send":
         sendmusic = redis.get('MusicName')
         audio = open('./Music/{}-Music.mp3'.format(sendmusic), 'rb')
-        bot.send_audio(m.chat.id, audio,reply_markup=Kinline)
+        bot.send_audio(channel, audio,reply_markup=Kinline)
         bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id,text="با موفقیت ارسال شد✅")
 
 #######################################################################################
