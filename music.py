@@ -57,7 +57,7 @@ def SendMusic(m):
 
         elif re.match('(http|https)://.*.(mp3)$',m.text):
                     Mname = random_char(5)
-                    dw(text,'./Music/'+str(rd)+'-Music.mp3')
+                    dw(m.text,'./Music/'+str(rd)+'-Music.mp3')
                     Kinline = types.InlineKeyboardMarkup()
                     Tsend = types.InlineKeyboardButton('بفرس😉',callback_data="send")
                     Kinline.add(Tsend)
