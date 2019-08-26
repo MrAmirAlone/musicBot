@@ -54,7 +54,7 @@ def MusicBot(m):
                     Kinline = types.InlineKeyboardMarkup()
                     Tsend = types.InlineKeyboardButton('بفرس😉',callback_data="send")
                     Kinline.add(Tsend)
-                    audio = open('./Music/{}-Music.mp3'.format(code), 'rb')
+                    audio = open('./Music/{}-Music.mp3'.format(Mname), 'rb')
                     bot.send_audio(m.chat.id, audio,reply_markup=Kinline)
                     bot.send_message(m.chat.id,"فایل با فرمت *MP3* دانلود شد\nآیا مایلید به کانال ارسال شود؟",parse_mode='Markdown',reply_markup=Kinline)
 
