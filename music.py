@@ -73,7 +73,7 @@ def callback_inline(call):
         bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id,text="با موفقیت ارسال شد✅")
     if re.match('(sendvideo:).*',call.data):
         sendmusic = call.data.replace('sendvideo:','')
-        bot.send_audio(channel, open('./Music/'+str(sendmusic)+'-Music.mp4'))
+        bot.send_video(channel, open('./Music/'+str(sendmusic)+'-Music.mp4'))
         bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id,text="با موفقیت ارسال شد✅")
 
 #######################################################################################
