@@ -54,7 +54,7 @@ def dw(m):
     if m.from_user.id == 223870582 or m.from_user.id == 274081889:
         if m.text == '/start':
             bot.send_message(m.chat.id,"ربات آماده کاره😃")
-        text = m.text
+            text = m.text
         elif re.match('(http|https)://.*.(mp3)$',text):
                     Mname = random_char(5)
                     dw(text,'./Music/'+str(Mname)+'-Music.mp3')
