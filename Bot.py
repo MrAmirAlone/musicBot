@@ -52,14 +52,14 @@ def MusicBot(m):
                     Mname = random_char(5)
                     dw(text,'./Music/'+str(Mname)+'-Music.mp3')
                     Kinline = types.InlineKeyboardMarkup()
-                    Tsend = types.InlineKeyboardButton('بفرس😉',callback_data="sendmusic:"+str(Mname))
+                    Tsend = types.InlineKeyboardButton('بفرس😉',callback_data="sendm:"+str(Mname))
                     Kinline.add(Tsend)
                     bot.send_message(m.chat.id,"فایل با فرمت *MP3* دانلود شد\nآیا مایلید به کانال ارسال شود؟",parse_mode='Markdown',reply_markup=Kinline)
         elif re.match('(http|https)://.*.(mp4)$',text):
                     Mname = random_char(5)
                     dw(text,'./Music/'+str(Mname)+'-Music.mp4')
                     Kinline = types.InlineKeyboardMarkup()
-                    Tsend = types.InlineKeyboardButton('بفرس😉',callback_data="sendvideo:"+str(Mname))
+                    Tsend = types.InlineKeyboardButton('بفرس😉',callback_data="sendv:"+str(Mname))
                     Kinline.add(Tsend)
                     bot.send_message(m.chat.id,"فایل با فرمت *MP4* دانلود شد\nآیا مایلید به کانال ارسال شود؟",parse_mode='Markdown',reply_markup=Kinline)
 
@@ -67,11 +67,11 @@ def MusicBot(m):
 
 @bot.callback_query_handler(func=lambda call: True)
 def callback_inline(call):
-    if re.match('(sendmusic:).*',call.data):
-        sendmusic = call.data.replace('send:','')
-        bot.send_audio(channel, open('./Music/'+str(sendmusic)+'-Music.mp3'))
+    if re.match('(sendm:).*',call.data):
+        sendmusic1 = call.data.replace('sendm:','')
+        bot.send_audio(channel, open('./Music/'+str(sendmusic1)+'-Music.mp3'))
         bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id,text="با موفقیت ارسال شد✅")
-    if re.match('(sendvideo:).*',call.data):
+    if re.match('(sendv:).*',call.data):
         sendmusic = call.data.replace('sendvideo:','')
         bot.send_video(channel, open('./Music/'+str(sendmusic)+'-Music.mp4'))
         bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id,text="با موفقیت ارسال شد✅")
