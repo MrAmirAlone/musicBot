@@ -44,7 +44,7 @@ def random_char(y):
 @bot.callback_query_handler(func=lambda call: True)
 def callback_inline(call):
     if call.data == "send":
-        bot.send_audio(channel, open('./Music/'+str(Mname)+'-Music.mp3'))
+        bot.send_audio(channel, open('./Music/'+str(rd)+'-Music.mp3'))
         bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id,text="با موفقیت ارسال شد✅")
 
 #######################################################################################
@@ -56,8 +56,9 @@ def dw(m):
         if m.text == '/start':
             bot.send_message(m.chat.id,"ربات آماده کاره😃")
         elif re.match('(http|https)://.*.(mp3)$',text):
-                    Mname = random_char(5)
-                    dw(text,'./Music/'+str(Mname)+'-Music.mp3')
+                    rd = random_char(5)
+                    pm = rd
+                    dw(text,'./Music/'+str(rd)+'-Music.mp3')
                     Kinline = types.InlineKeyboardMarkup()
                     Tsend = types.InlineKeyboardButton('بفرس😉',callback_data="send")
                     Kinline.add(Tsend)
