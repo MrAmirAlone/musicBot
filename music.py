@@ -49,7 +49,7 @@ def MusicBot(m):
             bot.send_message(m.chat.id,"ربات آماده کاره😃")
         elif re.match('(http|https)://.*.(mp3)$',text):
                     Mname = random_char(5)
-                    redis.hset('MusicName',Mname)
+                    redis.hset('MusicName:',Mname)
                     dw(text,'./Music/'+str(Mname)+'-Music.mp3')
                     Kinline = types.InlineKeyboardMarkup()
                     Tsend = types.InlineKeyboardButton('بفرس😉',callback_data="send")
@@ -61,8 +61,8 @@ def MusicBot(m):
 @bot.callback_query_handler(func=lambda call: True)
 def callback_inline(call):
     if call.data == "send":
-        redis.hget('MusicName')
-        bot.send_audio(channel, open('./Music/'+str(Mname)+'-Music.mp3'))
+        dodol = redis.hget('MusicName')
+        bot.send_audio(channel, open('./Music/'+str(dodol)+'-Music.mp3'))
         bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id,text="با موفقیت ارسال شد✅")
 
 #######################################################################################
