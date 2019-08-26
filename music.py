@@ -50,7 +50,6 @@ def MusicBot(m):
             bot.send_message(m.chat.id,"ربات آماده کاره😃")
         elif re.match('(http|https)://.*.(mp3)$',text):
                     Mname = random_char(5)
-                    redis.sadd('MusicName',Mname)
                     dw(text,'./Music/'+str(Mname)+'-Music.mp3')
                     Kinline = types.InlineKeyboardMarkup()
                     Tsend = types.InlineKeyboardButton('بفرس😉',callback_data="send:"+str(Mname))
