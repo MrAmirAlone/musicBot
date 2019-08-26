@@ -34,7 +34,7 @@ u = "\n \033[01;34m Bot Username: {} \033[0m".format(bot.get_me().username)
 i = "\n \033[01;32m Bot ID: {} \033[0m".format(bot.get_me().id)
 c = "\n \033[01;31m Bot Is Online Now! \033[0m"
 print(f + u + i + c)
-channel = -1001110830559
+channel = -1001348292872
 #######################################################################################
 
 def random_char(y):
