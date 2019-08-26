@@ -55,9 +55,9 @@ def SendMusic(m):
         if m.text == '/start':
             bot.send_message(m.chat.id,"ربات آماده کاره😃")
 
-                text = m.text
-                id = m.from_user.id
-                elif re.match('(http|https)://.*.(mp3)$',text):
+        text = m.text
+        id = m.from_user.id
+        elif re.match('(http|https)://.*.(mp3)$',text):
                     Mname = random_char(5)
                     dw(text,'./Music/'+str(rd)+'-Music.mp3')
                     Kinline = types.InlineKeyboardMarkup()
