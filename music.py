@@ -41,11 +41,6 @@ def random_char(y):
 
 #######################################################################################
 
-@bot.callback_query_handler(func=lambda call: True)
-def callback_inline(call):
-    if call.data == "send":
-        bot.send_audio(channel, open('./Music/'+str(Mname)+'-Music.mp3'))
-        bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id,text="با موفقیت ارسال شد✅")
 
 #######################################################################################
 
@@ -63,6 +58,12 @@ def MusicBot(m):
                     Kinline.add(Tsend)
                     bot.send_message(m.chat.id,"فایل با فرمت *MP3* دانلود شد\nآیا مایلید به کانال ارسال شود؟",parse_mode='Markdown',reply_markup=Kinline)
 
+
+@bot.callback_query_handler(func=lambda call: True)
+def callback_inline(call):
+    if call.data == "send":
+        bot.send_audio(channel, open('./Music/'+str(Mname)+'-Music.mp3'))
+        bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id,text="با موفقیت ارسال شد✅")
 #######################################################################################
 
 bot.polling(True)
