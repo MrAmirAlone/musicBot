@@ -61,7 +61,8 @@ def MusicBot(m):
 @bot.callback_query_handler(func=lambda call: True)
 def callback_inline(call):
     if call.data == "send":
-        bot.send_audio(channel, open('./Music/{}-Music.mp3'.format(Mname), 'rb'))
+        audio = open('./Music/{}-Music.mp3'.format(Mname), 'rb')
+        bot.send_audio(m.chat.id, audio,reply_markup=Kinline)
         bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id,text="با موفقیت ارسال شد✅")
 
 #######################################################################################
