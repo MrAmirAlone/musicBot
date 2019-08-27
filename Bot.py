@@ -34,8 +34,9 @@ u = "\n \033[01;34m Bot Username: {} \033[0m".format(bot.get_me().username)
 i = "\n \033[01;32m Bot ID: {} \033[0m".format(bot.get_me().id)
 c = "\n \033[01;31m Bot Is Online Now! \033[0m"
 print(f + u + i + c)
-channel = -1001110830559
 #######################################################################################
+
+channel = -1001110830559
 
 def random_char(y):
      return ''.join(random.choice(string.ascii_letters) for x in range(y))
@@ -49,10 +50,6 @@ def MusicBot(m):
         if m.text == '/start':
             startmsg = "ربات آماده کاره😃"
             bot.send_message(m.chat.id,startmsg)
-
-
-
-            bot.delete_message(m.chat.id,message_id=startmsg.message_id)
         elif re.match('(http|https)://.*.(mp3)$',text):
                     Mname = random_char(5)
                     dw(text,'./Music/'+str(Mname)+'-Music.mp3')
