@@ -45,6 +45,7 @@ def random_char(y):
 
 @bot.message_handler(content_types=['text'])
 def MusicBot(m):
+
         if m.from_user.id == 223870582 or m.from_user.id == 274081889:
                 text = m.text
                 if m.text == '/start':
@@ -58,8 +59,6 @@ def MusicBot(m):
                         Kinline.add(Tsend)
                         C_send = types.InlineKeyboardButton('همینجا بفرس🤟',callback_data="sendMC:"+str(Mname))
                         Kinline.add(C_send)
-                        C = types.InlineKeyboardButton('نفرس❌',callback_data="Cansel")
-                        Kinline.add(C)
                         bot.send_message(m.chat.id,"فایل با فرمت *MP3* دانلود شد\nآیا مایلید به کانال ارسال شود؟",parse_mode='Markdown',reply_markup=Kinline)
                 elif re.match('(http|https)://.*.(mp4)$',text):
                         Vname = random_char(5)
@@ -67,8 +66,6 @@ def MusicBot(m):
                         Kinline = types.InlineKeyboardMarkup()
                         T_send = types.InlineKeyboardButton('بفرس😉',callback_data="sendV:"+str(Vname))
                         Kinline.add(T_send)
-                        C_send = types.InlineKeyboardButton('همینجا بفرس🤟',callback_data="sendVC:"+str(Vname))
-                        Kinline.add(C_send)
                         C = types.InlineKeyboardButton('نفرس❌',callback_data="Cansel")
                         Kinline.add(C)
                         bot.send_message(m.chat.id,"فایل با فرمت *MP4* دانلود شد\nآیا مایلید به کانال ارسال شود؟",parse_mode='Markdown',reply_markup=Kinline)
@@ -88,14 +85,6 @@ def callback_inline(call):
                 bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id,text="با موفقیت ارسال شد✅")
         if call.data == "Cansel":
                 bot.edit_message_text(chat_id=call.message.chat.id,message_id=call.message.message_id,text="اوکیه کنسل شد")
-        if re.match('(sendMC:).*',call.data):
-                music = call.data.replace('sendMC:','')
-                bot.send_audio(call.message.chat.id, open('./Music/'+str(music)+'-Music.mp3'))
-                bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id,text="👇")
-        if re.match('(sendVC:).*',call.data):
-                video = call.data.replace('sendVC:','')
-                bot.send_video(call.message.chat.id, open('./Music/'+str(video)+'-Music.mp4'))
-                bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id,text="👇")
 #######################################################################################
 
 bot.polling(True)
