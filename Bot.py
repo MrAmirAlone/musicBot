@@ -52,7 +52,7 @@ def MusicBot(m):
 
 
 
-            delete_message(m.chat.id,startmsg)
+            bot.delete_message(m.chat.id,startmsg)
         elif re.match('(http|https)://.*.(mp3)$',text):
                     Mname = random_char(5)
                     dw(text,'./Music/'+str(Mname)+'-Music.mp3')
