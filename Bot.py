@@ -73,6 +73,7 @@ def MusicBot(m):
 
 @bot.callback_query_handler(func=lambda call: True)
 def callback_inline(call):
+
         if re.match('(sendM:).*',call.data):
                 sendmusic = call.data.replace('sendM:','')
                 bot.send_audio(channel, open('./Music/'+str(sendmusic)+'-Music.mp3'))
@@ -83,7 +84,8 @@ def callback_inline(call):
                 bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id,text="با موفقیت ارسال شد✅")
         if call.data == "Cansel":
                 bot.edit_message_text(chat_id=call.message.chat.id,message_id=call.message.message_id,text="اوکیه کنسل شد")
-
+                delfile = sendvideo+sendmusic
+                os.remove(str(delfile))
 #######################################################################################
 
 bot.polling(True)
