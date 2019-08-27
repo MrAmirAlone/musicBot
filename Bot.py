@@ -56,6 +56,8 @@ def MusicBot(m):
                     Kinline = types.InlineKeyboardMarkup()
                     Tsend = types.InlineKeyboardButton('بفرس😉',callback_data="sendM:"+str(Mname))
                     Kinline.add(Tsend)
+                    C = types.InlineKeyboardButton('نفرس❌',callback_data="Cansel")
+                    Kinline.add(C)
                     bot.send_message(m.chat.id,"فایل با فرمت *MP3* دانلود شد\nآیا مایلید به کانال ارسال شود؟",parse_mode='Markdown',reply_markup=Kinline)
         elif re.match('(http|https)://.*.(mp4)$',text):
                     Vname = random_char(5)
@@ -63,20 +65,24 @@ def MusicBot(m):
                     Kinline = types.InlineKeyboardMarkup()
                     T_send = types.InlineKeyboardButton('بفرس😉',callback_data="sendV:"+str(Vname))
                     Kinline.add(T_send)
+                    C = types.InlineKeyboardButton('نفرس❌',callback_data="Cansel")
+                    Kinline.add(C)
                     bot.send_message(m.chat.id,"فایل با فرمت *MP4* دانلود شد\nآیا مایلید به کانال ارسال شود؟",parse_mode='Markdown',reply_markup=Kinline)
 
 #######################################################################################
 
 @bot.callback_query_handler(func=lambda call: True)
 def callback_inline(call):
-    if re.match('(sendM:).*',call.data):
-        sendmusic = call.data.replace('sendM:','')
-        bot.send_audio(channel, open('./Music/'+str(sendmusic)+'-Music.mp3'))
-        bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id,text="با موفقیت ارسال شد✅")
-    if re.match('(sendV:).*',call.data):
-        sendvideo = call.data.replace('sendV:','')
-        bot.send_video(channel, open('./Music/'+str(sendvideo)+'-Music.mp4'))
-        bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id,text="با موفقیت ارسال شد✅")
+        if re.match('(sendM:).*',call.data):
+                sendmusic = call.data.replace('sendM:','')
+                bot.send_audio(channel, open('./Music/'+str(sendmusic)+'-Music.mp3'))
+                bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id,text="با موفقیت ارسال شد✅")
+        if re.match('(sendV:).*',call.data):
+                sendvideo = call.data.replace('sendV:','')
+                bot.send_video(channel, open('./Music/'+str(sendvideo)+'-Music.mp4'))
+                bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id,text="با موفقیت ارسال شد✅")
+        if call.data == "Cansel":
+                bot.edit_message_text(chat_id=call.message.chat.id,message_id=call.message.message_id,"اوکیه کنسل شد")
 
 #######################################################################################
 
