@@ -36,7 +36,7 @@ c = "\n \033[01;31m Bot Is Online Now! \033[0m"
 print(f + u + i + c)
 #######################################################################################
 
-channel = -1001110830559
+channel = -1001348292872
 
 def random_char(y):
      return ''.join(random.choice(string.ascii_letters) for x in range(y))
