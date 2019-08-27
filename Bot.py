@@ -47,7 +47,12 @@ def MusicBot(m):
     if m.from_user.id == 223870582 or m.from_user.id == 274081889:
         text = m.text
         if m.text == '/start':
-            bot.send_message(m.chat.id,"ربات آماده کاره😃")
+            startmsg = "ربات آماده کاره😃"
+            bot.send_message(m.chat.id,startmsg)
+
+
+
+            delete_message(m.chat.id,startmsg)
         elif re.match('(http|https)://.*.(mp3)$',text):
                     Mname = random_char(5)
                     dw(text,'./Music/'+str(Mname)+'-Music.mp3')
