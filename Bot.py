@@ -56,7 +56,7 @@ def MusicBot(m):
                         Kinline = types.InlineKeyboardMarkup()
                         Tsend = types.InlineKeyboardButton('بفرس😉',callback_data="sendM:"+str(Mname))
                         Kinline.add(Tsend)
-                        C_send = types.InlineKeyboardButton('همینجا بفرس🤟',callback_data="sendMC:"+str(Vname))
+                        C_send = types.InlineKeyboardButton('همینجا بفرس🤟',callback_data="sendMC:"+str(Mname))
                         Kinline.add(C_send)
                         C = types.InlineKeyboardButton('نفرس❌',callback_data="Cansel")
                         Kinline.add(C)
@@ -94,7 +94,7 @@ def callback_inline(call):
                 bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id,text="☝️")
         if re.match('(sendVC:).*',call.data):
                 music = call.data.replace('sendVC:','')
-                bot.send_video(call.message.chat.id, open('./Music/'+str(music)+'-Music.mp4'))
+                bot.send_video(call.message.chat.id, open('./Music/'+str(video)+'-Music.mp4'))
                 bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id,text="☝️")
 #######################################################################################
 
