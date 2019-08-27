@@ -75,17 +75,15 @@ def MusicBot(m):
 def callback_inline(call):
 
         if re.match('(sendM:).*',call.data):
-                sendmusic = call.data.replace('sendM:','')
-                bot.send_audio(channel, open('./Music/'+str(sendmusic)+'-Music.mp3'))
+                music = call.data.replace('sendM:','')
+                bot.send_audio(channel, open('./Music/'+str(music)+'-Music.mp3'))
                 bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id,text="با موفقیت ارسال شد✅")
         if re.match('(sendV:).*',call.data):
-                sendvideo = call.data.replace('sendV:','')
-                bot.send_video(channel, open('./Music/'+str(sendvideo)+'-Music.mp4'))
+                video = call.data.replace('sendV:','')
+                bot.send_video(channel, open('./Music/'+str(video)+'-Music.mp4'))
                 bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id,text="با موفقیت ارسال شد✅")
         if call.data == "Cansel":
                 bot.edit_message_text(chat_id=call.message.chat.id,message_id=call.message.message_id,text="اوکیه کنسل شد")
-                delfile = sendvideo+sendmusic
-                os.remove(str(delfile))
 #######################################################################################
 
 bot.polling(True)
