@@ -82,7 +82,7 @@ def callback_inline(call):
                 bot.send_video(channel, open('./Music/'+str(sendvideo)+'-Music.mp4'))
                 bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id,text="با موفقیت ارسال شد✅")
         if call.data == "Cansel":
-                bot.edit_message_text(chat_id=call.message.chat.id,message_id=call.message.message_id,"اوکیه کنسل شد")
+                bot.edit_message_text(chat_id=call.message.chat.id,message_id=call.message.message_id,text="اوکیه کنسل شد")
 
 #######################################################################################
 
