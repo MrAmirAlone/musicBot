@@ -57,7 +57,7 @@ def MusicBot(m):
                     bot.send_message(m.chat.id,"فایل با فرمت *MP3* دانلود شد\nآیا مایلید به کانال ارسال شود؟",parse_mode='Markdown',reply_markup=Kinline)
         elif re.match('(http|https)://.*.(mp4)$',text):
                     Vname = random_char(5)
-                    dw(text,'./Music/'+str(Mname)+'-Music.mp4')
+                    dw(text,'./Music/'+str(Vname)+'-Music.mp4')
                     Kinline = types.InlineKeyboardMarkup()
                     T_send = types.InlineKeyboardButton('بفرس😉',callback_data="sendV:"+str(Vname))
                     Kinline.add(T_send)
