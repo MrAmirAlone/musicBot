@@ -89,7 +89,7 @@ def callback_inline(call):
         if re.match('(sendMC:).*',call.data):
                 music = call.data.replace('sendMC:','')
                 bot.send_audio(call.message.chat.id, open('./Music/'+str(music)+'-Music.mp3'))
-                bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id,text="فایل اوکیه؟\n بفرستم کانال؟",reply_markup=Kinline)
+                bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id,text="👇")
         if re.match('(sendVC:).*',call.data):
                 video = call.data.replace('sendVC:','')
                 bot.send_video(call.message.chat.id, open('./Music/'+str(video)+'-Music.mp4'))
