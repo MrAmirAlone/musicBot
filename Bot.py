@@ -45,7 +45,7 @@ def random_char(y):
 
 @bot.message_handler(content_types=['text'])
 def MusicBot(m):
-        if m.from_user.id == 223870582 or m.from_user.id == 274081889:
+        if m.from_user.id == 223870582 or m.from_user.id == 274081889 or  m.from_user.id == 618298228:
                 text = m.text
                 if m.text == '/start':
                         startmsg = "ربات آماده کاره😃"
