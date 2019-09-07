@@ -82,7 +82,7 @@ def callback_inline(call):
                 bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id,text="با موفقیت ارسال شد✅")
         if re.match('(sendV:).*',call.data):
                 video = call.data.replace('sendV:','')
-                bot.send_video(channel, open('./Music/'+str(video)+'-Music.mp4'),duration=True)
+                bot.send_video(channel, open('./Music/'+str(video)+'-Music.mp4'))
                 bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id,text="با موفقیت ارسال شد✅")
         if call.data == "Cansel":
                 bot.edit_message_text(chat_id=call.message.chat.id,message_id=call.message.message_id,text="اوکیه کنسل شد")
@@ -92,7 +92,7 @@ def callback_inline(call):
                 bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id,text="👇")
         if re.match('(sendVC:).*',call.data):
                 video = call.data.replace('sendVC:','')
-                bot.send_video(call.message.chat.id, open('./Music/'+str(video)+'-Music.mp4'))
+                bot.send_video(call.message.chat.id, open('./Music/'+str(video)+'-Music.mp4'),duration=True)
                 bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id,text="👇")
 #######################################################################################
 
