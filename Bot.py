@@ -36,7 +36,7 @@ c = "\n \033[01;31m Bot Is Online Now! \033[0m"
 print(f + u + i + c)
 #######################################################################################
 
-channel = -1001348292872
+channel = -1001110830559
 
 def random_char(y):
      return ''.join(random.choice(string.ascii_letters) for x in range(y))
@@ -45,7 +45,7 @@ def random_char(y):
 
 @bot.message_handler(content_types=['text'])
 def MusicBot(m):
-        if m.from_user.id == 223870582 or m.from_user.id == 274081889 or  m.from_user.id == 618298228:
+        if m.from_user.id == 223870582 or m.from_user.id == 274081889:
                 text = m.text
                 if m.text == '/start':
                         startmsg = "ربات آماده کاره😃"
@@ -81,8 +81,8 @@ def callback_inline(call):
                 bot.send_audio(channel, open('./Music/'+str(music)+'-Music.mp3'))
                 bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id,text="با موفقیت ارسال شد✅")
         if re.match('(sendV:).*',call.data):
-                video = call.data.replace('sendV:','')
-                bot.send_video(channel, open('./Music/'+str(video)+'-Music.mp4'))
+                sendvid = open('./Music/'+str(video)+'-Music.mp4')
+                bot.send_video(channel, sendvid, supports_streaming=True)
                 bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id,text="با موفقیت ارسال شد✅")
         if call.data == "Cansel":
                 bot.edit_message_text(chat_id=call.message.chat.id,message_id=call.message.message_id,text="اوکیه کنسل شد")
@@ -92,7 +92,8 @@ def callback_inline(call):
                 bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id,text="👇")
         if re.match('(sendVC:).*',call.data):
                 video = call.data.replace('sendVC:','')
-                bot.send_video(call.message.chat.id, open('./Music/'+str(video)+'-Music.mp4'))
+                sendvid = open('./Music/'+str(video)+'-Music.mp4')
+                bot.send_video(call.message.chat.id, sendvid, supports_streaming=True)
                 bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id,text="👇")
 #######################################################################################
 
