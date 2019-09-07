@@ -92,7 +92,7 @@ def callback_inline(call):
                 bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id,text="👇")
         if re.match('(sendVC:).*',call.data):
                 video = call.data.replace('sendVC:','')
-                bot.send_video(call.message.chat.id, open('./Music/'+str(video)+'-Music.mp4'),duration=True)
+                bot.send_video(call.message.chat.id, open('./Music/'+str(video)+'-Music.mp4'),duration=False)
                 bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id,text="👇")
 #######################################################################################
 
