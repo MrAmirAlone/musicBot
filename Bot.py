@@ -69,7 +69,8 @@ def MusicBot(m):
                         Kinline.add(T_send,C_send)
                         C = types.InlineKeyboardButton('نفرس❌',callback_data="Cansel")
                         Kinline.add(C)
-                        bot.send_message(m.chat.id,"فایل با فرمت *MP4* دانلود شد\nآیا مایلید به کانال ارسال شود؟",parse_mode='Markdown',reply_markup=Kinline)
+                        textv = "فایل با فرمت *MP4* دانلود شد\nآیا مایلید به کانال ارسال شود؟"
+                        bot.send_message(m.chat.id,textv,parse_mode='Markdown',reply_markup=Kinline)
 
 #######################################################################################
 
@@ -94,7 +95,7 @@ def callback_inline(call):
                 video = call.data.replace('sendVC:','')
                 sendvid = open('./Music/'+str(video)+'-Music.mp4')
                 bot.send_video(call.message.chat.id, sendvid, supports_streaming=True,duration=40)
-                bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id,text="👇")
+                bot.delete_message(chat_id=call.message.chat.id, message_id=textv)
 #######################################################################################
 
 bot.polling(True)
