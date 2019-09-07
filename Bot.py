@@ -93,7 +93,7 @@ def callback_inline(call):
         if re.match('(sendVC:).*',call.data):
                 video = call.data.replace('sendVC:','')
                 sendvid = open('./Music/'+str(video)+'-Music.mp4')
-                bot.send_video(call.message.chat.id, sendvid, supports_streaming=True)
+                bot.send_video(call.message.chat.id, sendvid, supports_streaming=True,duration=40)
                 bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id,text="👇")
 #######################################################################################
 
